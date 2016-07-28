@@ -8,6 +8,7 @@ up in your config), it will scale them up. You can also set a minimum/maximum li
 ## Usage ##
 
 In order to use kinesis-asg you'll need to do a couple things:
+
 1. Fill out the config. Example: `cp kinesis-asg-config.json.example kinesis-asg-config.json`, and fill it out.
 2. Set an upstart config to run the ruby script `kinesis-asg-runner` on start.
 3. Start the runner for the first time manually. I.E. `bundle install && bundle exec ruby kinesis-asg-runner.rb start`
