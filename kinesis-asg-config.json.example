@@ -1,0 +1,43 @@
+{
+  "streams": [
+    {
+      "name": "tubular",
+      "region": "us-east-1",
+      "scaleOn": "ALL",
+      "minShards": 1,
+      "maxShards": 60,
+      "scalingConfig": {
+        "up": {
+          "thresholdPct": 70
+        },
+        "down": {
+          "thresholdPct": 10
+        }
+      }
+    },
+    {
+      "name": "surfin",
+      "region": "us-west-2",
+      "scaleOn": "GET",
+      "minShards": "2",
+      "maxShards": "4",
+      "scalingConfig": {
+        "up": {
+          "thresholdPct": 90
+        },
+        "down": {
+          "thresholdPct": 5
+        },
+        "ignoreShardsForScaleDown": [
+          "shard-id-here"
+        ]
+      }
+    }
+  ],
+  "cloudwatchRefreshTime": 60,
+  "postToSlack": true,
+  "slack_webhook_url": "https://*.slack.com/webhookurl",
+  "slack_channel": "#kinesis-noisy",
+  "slack_username": "Mr. H0t Tub3s",
+  "slack_icon": "smiley"
+}
