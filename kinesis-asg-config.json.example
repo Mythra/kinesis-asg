@@ -1,40 +1,37 @@
 {
+  "accounts": {
+    "account_one": {
+      "assume_role": false
+    },
+    "account_two": {
+      "assume_role": true,
+      "role_arn": "an_amazing_arn",
+      "role_session_name": "a_great_session_name"
+    }
+  },
   "streams": [
     {
-      "name": "tubular",
+      "name": "a greata stream",
+      "account": "account_one",
       "region": "us-east-1",
-      "scaleOn": "ALL",
+      "scaleOn": "PUT",
+      "shardLevelScale": true,
+      "scaleOnWriteErrors": true,
       "minShards": 1,
-      "maxShards": 60,
+      "maxShards": 10,
       "scalingConfig": {
         "up": {
-          "thresholdPct": 70
+          "thresholdPct": 60,
+          "rate": 1
         },
         "down": {
-          "thresholdPct": 10
+          "thresholdPct": 10,
+          "rate": 1
         }
-      }
-    },
-    {
-      "name": "surfin",
-      "region": "us-west-2",
-      "scaleOn": "GET",
-      "minShards": "2",
-      "maxShards": "4",
-      "scalingConfig": {
-        "up": {
-          "thresholdPct": 90
-        },
-        "down": {
-          "thresholdPct": 5
-        },
-        "ignoreShardsForScaleDown": [
-          "shard-id-here"
-        ]
       }
     }
   ],
-  "cloudwatchRefreshTime": 60,
+  "cloudwatchRefreshTime": 300,
   "postToSlack": true,
   "slack_webhook_url": "https://*.slack.com/webhookurl",
   "slack_channel": "#kinesis-noisy",
